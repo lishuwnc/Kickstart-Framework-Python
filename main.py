@@ -65,4 +65,4 @@ def main(case_type, num_process=6, problem_prefix='A', multiline_output=False):
                 print('Case #{0}: {1}'.format(res[i][0] + 1, res[i][1]), file=fout)
 
 if __name__ == '__main__':
-    main('small', num_process=10, problem_prefix='AAA2017', multiline_output=False)
+    main('small', num_process=10, problem_prefix='AAD2017', multiline_output=False)
