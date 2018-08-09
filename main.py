@@ -2,6 +2,7 @@ import multiprocessing
 import queue
 from A2015 import *
 from A2016 import *
+from AA2017 import *
 from B2015 import *
 from B2016 import *
 from B2017 import *
@@ -64,4 +65,4 @@ def main(case_type, num_process=6, problem_prefix='A', multiline_output=False):
                 print('Case #{0}: {1}'.format(res[i][0] + 1, res[i][1]), file=fout)
 
 if __name__ == '__main__':
-    main('small', num_process=10, problem_prefix='ED2016', multiline_output=True)
+    main('small', num_process=10, problem_prefix='AAA2017', multiline_output=False)
