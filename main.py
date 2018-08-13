@@ -15,6 +15,7 @@ from C2018 import *
 from D2015 import *
 from D2016 import *
 from D2017 import *
+from DD2017 import *
 from D2018 import *
 from E2016 import *
 from E2017 import *
@@ -67,4 +68,4 @@ def main(case_type, num_process=6, problem_prefix='A', multiline_output=False):
                 print('Case #{0}: {1}'.format(res[i][0] + 1, res[i][1]), file=fout)
 
 if __name__ == '__main__':
-    main('small', num_process=10, problem_prefix='CCD2017', multiline_output=False)
+    main('small', num_process=10, problem_prefix='DDA2017', multiline_output=False)
