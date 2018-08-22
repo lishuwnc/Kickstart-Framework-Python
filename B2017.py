@@ -23,12 +23,46 @@ def parseBB2017(input_file, qin):
         for i in range(t):
             n = int(fin.readline().rstrip('\n'))
             p = []
-            p.append(parseline(fin.readline().rstrip('\n'), dtype_fn=float))
+            for j in range(n):
+                p.append(parseline(fin.readline().rstrip('\n'), dtype_fn=float))
             qin.put((i, n, p))
     return t
 
 def solveBB2017(n, p):
-    x0, y0 = 0, 0
+    def dis(x, y):
+        d = 0
+        for _x, _y, w in p:
+            d += w * max(abs(x - _x), abs(y - _y))
+        return d
+    xlo, xhi = -1000, 1000
+    d1 = 0
+    while xhi - xlo > 1e-8:
+        xmid = (xlo + xhi) / 2
+        xtmp = (xmid + xhi) / 2
+        ylo, yhi = -1000, 1000
+        while yhi - ylo > 1e-8:
+            ymid = (ylo + yhi) / 2
+            ytmp = (ymid + yhi) / 2
+            if dis(xmid, ymid) < dis(xmid, ytmp):
+                yhi = ytmp
+            else:
+                ylo = ymid
+        d1 = dis(xmid, (ylo + yhi) / 2)
+        ylo, yhi = -1000, 1000
+        while yhi - ylo > 1e-8:
+            ymid = (ylo + yhi) / 2
+            ytmp = (ymid + yhi) / 2
+            if dis(xtmp, ymid) < dis(xtmp, ytmp):
+                yhi = ytmp
+            else:
+                ylo = ymid
+        d2 = dis(xtmp, (ylo + yhi) / 2)
+        if d1 < d2:
+            xhi = xtmp
+        else:
+            xlo = xmid
+    return d1
+
 
 def parseBC2017(input_file, qin):
     with open(input_file, 'r') as fin:
