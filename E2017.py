@@ -66,3 +66,27 @@ def solveEB2017(n, L):
         if count[i] >= 3:
             res += count[i] * (count[i] - 1) * (count[i] - 2) // 6 * ir
     return res
+
+def parseEC2017(input_file, qin):
+    with open(input_file, 'r') as fin:
+        t = int(fin.readline().rstrip('\n'))
+        for i in range(t):
+            a = parseline(fin.readline().rstrip('\n'))
+            b = parseline(fin.readline().rstrip('\n'))
+            c = parseline(fin.readline().rstrip('\n'))
+            qin.put((i, a, b, c))
+    return t
+
+def sovleEC(a, b, c):
+    res = 2 ** 31
+    p = [(a, b, c), (a, c, b), (b, a, c), (b, c, a), (c, a, b), (c, b, a)]
+    for x, y, z in p:
+        lo = 0
+        hi = 2 ** 31
+        while hi - lo >= 1e-6:
+            mid = (lo + hi) / 2
+            if isCircleCross(a, 3 * mid, b, mid, c, 3 * mid):
+                hi = mid
+            else:
+                lo = mid
+        res = min(res, (lo + hi) / 2)

@@ -21,6 +21,7 @@ from D2018 import *
 from E2016 import *
 from E2017 import *
 from EE2017 import *
+from F2017 import *
 
 def worker_fn(qin, qout, solver):
     while True:
@@ -70,4 +71,4 @@ def main(case_type, num_process=6, problem_prefix='A', multiline_output=False):
 
 
 if __name__ == '__main__':
-    main('small', num_process=10, problem_prefix='BB2017', multiline_output=False)
+    main('small', num_process=10, problem_prefix='FC2017', multiline_output=False)
