@@ -6,6 +6,7 @@ from functools import total_ordering
 import fractions
 import math
 import numpy as np
+import networkx as nx
 
 class UnionSet:
     def __init__(self, x, y):
